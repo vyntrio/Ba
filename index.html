@@ -3,43 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Payment</title>
+  <title>Buy Credit Card</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      background: #fffbe6;
       padding: 30px;
+      background: #f9f9f9;
     }
-    .qr-box {
-      padding: 20px;
-      background: #fff;
-      border-radius: 12px;
+    .box {
       max-width: 400px;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
       margin: auto;
       box-shadow: 0 0 10px #ccc;
     }
-    img {
-      width: 200px;
-      margin-bottom: 20px;
+    select, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
     }
-    p {
-      font-size: 18px;
-      font-weight: bold;
+    h1 {
+      color: #333;
     }
   </style>
 </head>
 <body>
-  <div class="qr-box">
-    <h2>Scan to Pay</h2>
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=yourupi@upi&pn=CreditCardStore&am=550&cu=INR" alt="QR Code">
-    <p>Pay ₹550 and wait 5–6 seconds, it will redirect you...</p>
+  <div class="box">
+    <h1>Buy Credit Card</h1>
+    <p>Select Card Type:</p>
+    <select id="cardType">
+      <option value="Visa">Visa</option>
+      <option value="MasterCard">MasterCard</option>
+      <option value="Amex">American Express</option>
+    </select>
+    <p><strong>$100 Card</strong> — <span style="color: green;">₹550</span></p>
+    <button onclick="proceedToPay()">Buy Now</button>
   </div>
 
   <script>
-    setTimeout(() => {
-      window.location.href = "success.html";
-    }, 6000);
+    function proceedToPay() {
+      const card = document.getElementById("cardType").value;
+      localStorage.setItem("selectedCard", card);
+      window.location.href = "payment.html";
+    }
   </script>
 </body>
 </html>
