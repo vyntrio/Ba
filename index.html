@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #fffbe6;
+      padding: 30px;
+    }
+    .qr-box {
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px #ccc;
+    }
+    img {
+      width: 200px;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="qr-box">
+    <h2>Scan to Pay</h2>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=yourupi@upi&pn=CreditCardStore&am=550&cu=INR" alt="QR Code">
+    <p>Pay ₹550 and wait 5–6 seconds, it will redirect you...</p>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      window.location.href = "success.html";
+    }, 6000);
+  </script>
+</body>
+</html>
